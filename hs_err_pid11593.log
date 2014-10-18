@@ -1,0 +1,423 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x0000000000000000, pid=11593, tid=140706896938752
+#
+# JRE version: OpenJDK Runtime Environment (7.0_55-b14) (build 1.7.0_55-b14)
+# Java VM: OpenJDK 64-Bit Server VM (24.51-b03 mixed mode linux-amd64 compressed oops)
+# Problematic frame:
+# C  0x0000000000000000
+#
+# Failed to write core dump. Core dumps have been disabled. To enable core dumping, try "ulimit -c unlimited" before starting Java again
+#
+# If you would like to submit a bug report, please include
+# instructions on how to reproduce the bug and visit:
+#   http://icedtea.classpath.org/bugzilla
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread is native thread
+
+siginfo:si_signo=SIGSEGV: si_errno=0, si_code=1 (SEGV_MAPERR), si_addr=0x0000000000000000
+
+Registers:
+RAX=0x00007ff8e2c827c0, RBX=0x0000000000000800, RCX=0x00007ff92438ff40, RDX=0x00007ff92438ff40
+RSP=0x00007ff8e09bfd18, RBP=0x00007ff924379dd0, RSI=0x0000000000000000, RDI=0x00007ff924379dd0
+R8 =0x0000000000435800, R9 =0x0000000000000001, R10=0x00007ff924379df4, R11=0x0000000000000000
+R12=0x00007ff92437df60, R13=0x0000000000012000, R14=0x0000000000002000, R15=0x00007ff8e09bfec8
+RIP=0x0000000000000000, EFLAGS=0x0000000000010246, CSGSFS=0x0000000000000033, ERR=0x0000000000000014
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007ff8e09bfd18)
+0x00007ff8e09bfd18:   00007ff8e2a4b4d1 00000000ffffffff
+0x00007ff8e09bfd28:   00007ff8c0005b60 00007ff8bb800000
+0x00007ff8e09bfd38:   00007ff92b2797a9 0000000000000000
+0x00007ff8e09bfd48:   00007ff8e2392fd2 00007ff924376da0
+0x00007ff8e09bfd58:   0000000000000000 0000000000000000
+0x00007ff8e09bfd68:   0000000000000000 00007ff924377c20
+0x00007ff8e09bfd78:   00007ff924377810 0000000000004000
+0x00007ff8e09bfd88:   00007ff8e239acda 00007ff924376920
+0x00007ff8e09bfd98:   00007ff8b8000ce0 0000000000000000
+0x00007ff8e09bfda8:   5700000000000001 0000000000004000
+0x00007ff8e09bfdb8:   00007ff8e239c7eb 0000000000000000
+0x00007ff8e09bfdc8:   0000000000000000 0000000000000000
+0x00007ff8e09bfdd8:   0000000000000000 0000000000000000
+0x00007ff8e09bfde8:   0000000000004000 00007ff924377810
+0x00007ff8e09bfdf8:   00007ff8e09bfec8 00007ff8e09bfec0
+0x00007ff8e09bfe08:   00007ff92437df60 00007ff8e23b5c80
+0x00007ff8e09bfe18:   00007ff8e2806bd2 00007ff8c807f040
+0x00007ff8e09bfe28:   00007ff8c800f040 00000800e09bfe70
+0x00007ff8e09bfe38:   00007ff8e09bfe50 0000000000000000
+0x00007ff8e09bfe48:   00007ff8e280bea2 00001fa00000037f
+0x00007ff8e09bfe58:   00007ff8e23809ff 00007ff924377c20
+0x00007ff8e09bfe68:   0000000000004000 00007ff924376d20
+0x00007ff8e09bfe78:   0000000000000000 00007ff924379dd0
+0x00007ff8e09bfe88:   0000000000000008 00007ff8e09bfec8
+0x00007ff8e09bfe98:   00007ff8e2a61544 0000000000000000
+0x00007ff8e09bfea8:   00007ff8e09bfec0 0000000000002000
+0x00007ff8e09bfeb8:   0000000000007f68 00007ff8c800f040
+0x00007ff8e09bfec8:   0000000000004000 0000000000000000
+0x00007ff8e09bfed8:   00007ff924379c80 0000000000000000
+0x00007ff8e09bfee8:   0000000000000000 0000000000000000
+0x00007ff8e09bfef8:   00007ff8e09c09c0 00007ff8e09c0700
+0x00007ff8e09bff08:   00007ff8e2a5473a 00007ff8e09c0700 
+
+Instructions: (pc=0x0000000000000000)
+0xffffffffffffffe0:   
+
+Register to memory mapping:
+
+RAX=0x00007ff8e2c827c0: <offset 0x2577c0> in /home/yew_mentzaki/.vau/native/libopenal64.so at 0x00007ff8e2a2b000
+RBX=0x0000000000000800 is an unknown value
+RCX=0x00007ff92438ff40 is an unknown value
+RDX=0x00007ff92438ff40 is an unknown value
+RSP=0x00007ff8e09bfd18 is an unknown value
+RBP=0x00007ff924379dd0 is an unknown value
+RSI=0x0000000000000000 is an unknown value
+RDI=0x00007ff924379dd0 is an unknown value
+R8 =0x0000000000435800 is an unknown value
+R9 =0x0000000000000001 is an unknown value
+R10=0x00007ff924379df4 is an unknown value
+R11=0x0000000000000000 is an unknown value
+R12=0x00007ff92437df60 is an unknown value
+R13=0x0000000000012000 is an unknown value
+R14=0x0000000000002000 is an unknown value
+R15=0x00007ff8e09bfec8 is an unknown value
+
+
+Stack: [0x00007ff8e08c0000,0x00007ff8e09c1000],  sp=0x00007ff8e09bfd18,  free space=1023k
+
+---------------  P R O C E S S  ---------------
+
+VM state:at safepoint (shutting down)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007ff924006eb0] Threads_lock - owner thread: 0x00007ff924076000
+
+Heap
+ PSYoungGen      total 152064K, used 48742K [0x00000000ebf00000, 0x00000000f5b00000, 0x0000000100000000)
+  eden space 147968K, 32% used [0x00000000ebf00000,0x00000000eee819e8,0x00000000f4f80000)
+  from space 4096K, 2% used [0x00000000f4f80000,0x00000000f4f98000,0x00000000f5380000)
+  to   space 4096K, 0% used [0x00000000f5700000,0x00000000f5700000,0x00000000f5b00000)
+ ParOldGen       total 52224K, used 12307K [0x00000000c3e00000, 0x00000000c7100000, 0x00000000ebf00000)
+  object space 52224K, 23% used [0x00000000c3e00000,0x00000000c4a04c38,0x00000000c7100000)
+ PSPermGen       total 28160K, used 14809K [0x00000000b9800000, 0x00000000bb380000, 0x00000000c3e00000)
+  object space 28160K, 52% used [0x00000000b9800000,0x00000000ba6765a8,0x00000000bb380000)
+
+Card table byte_map: [0x00007ff9282af000,0x00007ff9284e4000] byte_map_base: 0x00007ff927ce3000
+
+Polling page: 0x00007ff92b980000
+
+Code Cache  [0x00007ff921000000, 0x00007ff921270000, 0x00007ff924000000)
+ total_blobs=1027 nmethods=458 adapters=523 free_code_cache=46827Kb largest_free_block=47828224
+
+Compilation events (10 events):
+Event: 51,664 Thread 0x00007ff9240a5000 nmethod 469 0x00007ff92116ea90 code [0x00007ff92116ebc0, 0x00007ff92116ec18]
+Event: 51,665 Thread 0x00007ff9240a2000 nmethod 468 0x00007ff9212249d0 code [0x00007ff921224b20, 0x00007ff921224d98]
+Event: 51,751 Thread 0x00007ff9240a5000  470   !         sun.awt.AppContext::get (121 bytes)
+Event: 51,767 Thread 0x00007ff9240a5000 nmethod 470 0x00007ff9211e8950 code [0x00007ff9211e8ae0, 0x00007ff9211e94a8]
+Event: 52,123 Thread 0x00007ff9240a2000  471             java.util.concurrent.locks.LockSupport::setBlocker (12 bytes)
+Event: 52,124 Thread 0x00007ff9240a2000 nmethod 471 0x00007ff9212232d0 code [0x00007ff921223400, 0x00007ff921223478]
+Event: 52,725 Thread 0x00007ff9240a5000  472             java.lang.Thread::interrupted (8 bytes)
+Event: 52,727 Thread 0x00007ff9240a5000 nmethod 472 0x00007ff921223050 code [0x00007ff9212231a0, 0x00007ff921223228]
+Event: 57,814 Thread 0x00007ff9240a2000  473             javax.imageio.spi.PartialOrderIterator::<init> (86 bytes)
+Event: 57,840 Thread 0x00007ff9240a2000 nmethod 473 0x00007ff921225210 code [0x00007ff9212253c0, 0x00007ff921225a68]
+
+GC Heap History (10 events):
+Event: 45,014 GC heap before
+{Heap before GC invocations=30 (full 1):
+ PSYoungGen      total 143360K, used 138944K [0x00000000ebf00000, 0x00000000f5080000, 0x0000000100000000)
+  eden space 138752K, 100% used [0x00000000ebf00000,0x00000000f4680000,0x00000000f4680000)
+  from space 4608K, 4% used [0x00000000f4c00000,0x00000000f4c30000,0x00000000f5080000)
+  to   space 5120K, 0% used [0x00000000f4680000,0x00000000f4680000,0x00000000f4b80000)
+ ParOldGen       total 52224K, used 12187K [0x00000000c3e00000, 0x00000000c7100000, 0x00000000ebf00000)
+  object space 52224K, 23% used [0x00000000c3e00000,0x00000000c49e6c38,0x00000000c7100000)
+ PSPermGen       total 28160K, used 14778K [0x00000000b9800000, 0x00000000bb380000, 0x00000000c3e00000)
+  object space 28160K, 52% used [0x00000000b9800000,0x00000000ba66eb08,0x00000000bb380000)
+Event: 45,018 GC heap after
+Heap after GC invocations=30 (full 1):
+ PSYoungGen      total 143872K, used 128K [0x00000000ebf00000, 0x00000000f5500000, 0x0000000100000000)
+  eden space 138752K, 0% used [0x00000000ebf00000,0x00000000ebf00000,0x00000000f4680000)
+  from space 5120K, 2% used [0x00000000f4680000,0x00000000f46a0000,0x00000000f4b80000)
+  to   space 4608K, 0% used [0x00000000f5080000,0x00000000f5080000,0x00000000f5500000)
+ ParOldGen       total 52224K, used 12203K [0x00000000c3e00000, 0x00000000c7100000, 0x00000000ebf00000)
+  object space 52224K, 23% used [0x00000000c3e00000,0x00000000c49eac38,0x00000000c7100000)
+ PSPermGen       total 28160K, used 14778K [0x00000000b9800000, 0x00000000bb380000, 0x00000000c3e00000)
+  object space 28160K, 52% used [0x00000000b9800000,0x00000000ba66eb08,0x00000000bb380000)
+}
+Event: 47,919 GC heap before
+{Heap before GC invocations=31 (full 1):
+ PSYoungGen      total 143872K, used 138880K [0x00000000ebf00000, 0x00000000f5500000, 0x0000000100000000)
+  eden space 138752K, 100% used [0x00000000ebf00000,0x00000000f4680000,0x00000000f4680000)
+  from space 5120K, 2% used [0x00000000f4680000,0x00000000f46a0000,0x00000000f4b80000)
+  to   space 4608K, 0% used [0x00000000f5080000,0x00000000f5080000,0x00000000f5500000)
+ ParOldGen       total 52224K, used 12203K [0x00000000c3e00000, 0x00000000c7100000, 0x00000000ebf00000)
+  object space 52224K, 23% used [0x00000000c3e00000,0x00000000c49eac38,0x00000000c7100000)
+ PSPermGen       total 28160K, used 14779K [0x00000000b9800000, 0x00000000bb380000, 0x00000000c3e00000)
+  object space 28160K, 52% used [0x00000000b9800000,0x00000000ba66ec98,0x00000000bb380000)
+Event: 47,921 GC heap after
+Heap after GC invocations=31 (full 1):
+ PSYoungGen      total 147968K, used 192K [0x00000000ebf00000, 0x00000000f5480000, 0x0000000100000000)
+  eden space 143872K, 0% used [0x00000000ebf00000,0x00000000ebf00000,0x00000000f4b80000)
+  from space 4096K, 4% used [0x00000000f5080000,0x00000000f50b0000,0x00000000f5480000)
+  to   space 4608K, 0% used [0x00000000f4b80000,0x00000000f4b80000,0x00000000f5000000)
+ ParOldGen       total 52224K, used 12235K [0x00000000c3e00000, 0x00000000c7100000, 0x00000000ebf00000)
+  object space 52224K, 23% used [0x00000000c3e00000,0x00000000c49f2c38,0x00000000c7100000)
+ PSPermGen       total 28160K, used 14779K [0x00000000b9800000, 0x00000000bb380000, 0x00000000c3e00000)
+  object space 28160K, 52% used [0x00000000b9800000,0x00000000ba66ec98,0x00000000bb380000)
+}
+Event: 50,978 GC heap before
+{Heap before GC invocations=32 (full 1):
+ PSYoungGen      total 147968K, used 144064K [0x00000000ebf00000, 0x00000000f5480000, 0x0000000100000000)
+  eden space 143872K, 100% used [0x00000000ebf00000,0x00000000f4b80000,0x00000000f4b80000)
+  from space 4096K, 4% used [0x00000000f5080000,0x00000000f50b0000,0x00000000f5480000)
+  to   space 4608K, 0% used [0x00000000f4b80000,0x00000000f4b80000,0x00000000f5000000)
+ ParOldGen       total 52224K, used 12235K [0x00000000c3e00000, 0x00000000c7100000, 0x00000000ebf00000)
+  object space 52224K, 23% used [0x00000000c3e00000,0x00000000c49f2c38,0x00000000c7100000)
+ PSPermGen       total 28160K, used 14779K [0x00000000b9800000, 0x00000000bb380000, 0x00000000c3e00000)
+  object space 28160K, 52% used [0x00000000b9800000,0x00000000ba66eda8,0x00000000bb380000)
+Event: 50,980 GC heap after
+Heap after GC invocations=32 (full 1):
+ PSYoungGen      total 148480K, used 160K [0x00000000ebf00000, 0x00000000f5900000, 0x0000000100000000)
+  eden space 143872K, 0% used [0x00000000ebf00000,0x00000000ebf00000,0x00000000f4b80000)
+  from space 4608K, 3% used [0x00000000f4b80000,0x00000000f4ba8000,0x00000000f5000000)
+  to   space 4608K, 0% used [0x00000000f5480000,0x00000000f5480000,0x00000000f5900000)
+ ParOldGen       total 52224K, used 12259K [0x00000000c3e00000, 0x00000000c7100000, 0x00000000ebf00000)
+  object space 52224K, 23% used [0x00000000c3e00000,0x00000000c49f8c38,0x00000000c7100000)
+ PSPermGen       total 28160K, used 14779K [0x00000000b9800000, 0x00000000bb380000, 0x00000000c3e00000)
+  object space 28160K, 52% used [0x00000000b9800000,0x00000000ba66eda8,0x00000000bb380000)
+}
+Event: 53,991 GC heap before
+{Heap before GC invocations=33 (full 1):
+ PSYoungGen      total 148480K, used 144032K [0x00000000ebf00000, 0x00000000f5900000, 0x0000000100000000)
+  eden space 143872K, 100% used [0x00000000ebf00000,0x00000000f4b80000,0x00000000f4b80000)
+  from space 4608K, 3% used [0x00000000f4b80000,0x00000000f4ba8000,0x00000000f5000000)
+  to   space 4608K, 0% used [0x00000000f5480000,0x00000000f5480000,0x00000000f5900000)
+ ParOldGen       total 52224K, used 12259K [0x00000000c3e00000, 0x00000000c7100000, 0x00000000ebf00000)
+  object space 52224K, 23% used [0x00000000c3e00000,0x00000000c49f8c38,0x00000000c7100000)
+ PSPermGen       total 28160K, used 14779K [0x00000000b9800000, 0x00000000bb380000, 0x00000000c3e00000)
+  object space 28160K, 52% used [0x00000000b9800000,0x00000000ba66efd8,0x00000000bb380000)
+Event: 53,994 GC heap after
+Heap after GC invocations=33 (full 1):
+ PSYoungGen      total 151040K, used 192K [0x00000000ebf00000, 0x00000000f5780000, 0x0000000100000000)
+  eden space 147968K, 0% used [0x00000000ebf00000,0x00000000ebf00000,0x00000000f4f80000)
+  from space 3072K, 6% used [0x00000000f5480000,0x00000000f54b0000,0x00000000f5780000)
+  to   space 4096K, 0% used [0x00000000f4f80000,0x00000000f4f80000,0x00000000f5380000)
+ ParOldGen       total 52224K, used 12291K [0x00000000c3e00000, 0x00000000c7100000, 0x00000000ebf00000)
+  object space 52224K, 23% used [0x00000000c3e00000,0x00000000c4a00c38,0x00000000c7100000)
+ PSPermGen       total 28160K, used 14779K [0x00000000b9800000, 0x00000000bb380000, 0x00000000c3e00000)
+  object space 28160K, 52% used [0x00000000b9800000,0x00000000ba66efd8,0x00000000bb380000)
+}
+Event: 57,147 GC heap before
+{Heap before GC invocations=34 (full 1):
+ PSYoungGen      total 151040K, used 148160K [0x00000000ebf00000, 0x00000000f5780000, 0x0000000100000000)
+  eden space 147968K, 100% used [0x00000000ebf00000,0x00000000f4f80000,0x00000000f4f80000)
+  from space 3072K, 6% used [0x00000000f5480000,0x00000000f54b0000,0x00000000f5780000)
+  to   space 4096K, 0% used [0x00000000f4f80000,0x00000000f4f80000,0x00000000f5380000)
+ ParOldGen       total 52224K, used 12291K [0x00000000c3e00000, 0x00000000c7100000, 0x00000000ebf00000)
+  object space 52224K, 23% used [0x00000000c3e00000,0x00000000c4a00c38,0x00000000c7100000)
+ PSPermGen       total 28160K, used 14785K [0x00000000b9800000, 0x00000000bb380000, 0x00000000c3e00000)
+  object space 28160K, 52% used [0x00000000b9800000,0x00000000ba670638,0x00000000bb380000)
+Event: 57,151 GC heap after
+Heap after GC invocations=34 (full 1):
+ PSYoungGen      total 152064K, used 96K [0x00000000ebf00000, 0x00000000f5b00000, 0x0000000100000000)
+  eden space 147968K, 0% used [0x00000000ebf00000,0x00000000ebf00000,0x00000000f4f80000)
+  from space 4096K, 2% used [0x00000000f4f80000,0x00000000f4f98000,0x00000000f5380000)
+  to   space 4096K, 0% used [0x00000000f5700000,0x00000000f5700000,0x00000000f5b00000)
+ ParOldGen       total 52224K, used 12307K [0x00000000c3e00000, 0x00000000c7100000, 0x00000000ebf00000)
+  object space 52224K, 23% used [0x00000000c3e00000,0x00000000c4a04c38,0x00000000c7100000)
+ PSPermGen       total 28160K, used 14785K [0x00000000b9800000, 0x00000000bb380000, 0x00000000c3e00000)
+  object space 28160K, 52% used [0x00000000b9800000,0x00000000ba670638,0x00000000bb380000)
+}
+
+Deoptimization events (10 events):
+Event: 14,545 Thread 0x00007ff9242dd800 Uncommon trap: reason=array_check action=maybe_recompile pc=0x00007ff9211561a4 method=java.util.Arrays.fill([Ljava/lang/Object;Ljava/lang/Object;)V @ 13
+Event: 14,980 Thread 0x00007ff9242f9000 Uncommon trap: reason=intrinsic action=make_not_entrant pc=0x00007ff92116e590 method=vgame.VGame.getObjects(Lvengine/VPoint;I[Ljava/lang/String;)[Lvgame/VObject; @ 81
+Event: 15,149 Thread 0x00007ff9242f9000 Uncommon trap: reason=intrinsic action=make_not_entrant pc=0x00007ff921176448 method=vgame.VGame.getObjects(Lvengine/VPoint;I[Ljava/lang/String;)[Lvgame/VObject; @ 99
+Event: 23,108 Thread 0x00007ff9242dd800 Uncommon trap: reason=intrinsic action=make_not_entrant pc=0x00007ff9211d8734 method=vgame.VGame.renderObjects(Lvengine/VGraphics;)V @ 326
+Event: 24,272 Thread 0x00007ff9242dd800 Uncommon trap: reason=intrinsic action=make_not_entrant pc=0x00007ff9211ee520 method=vgame.VConvert.dist(DDDD)D @ 7
+Event: 25,204 Thread 0x00007ff9242dd800 Uncommon trap: reason=intrinsic action=make_not_entrant pc=0x00007ff921202e74 method=vgame.VGame.renderObjects(Lvengine/VGraphics;)V @ 307
+Event: 30,318 Thread 0x00007ff9242dd800 Uncommon trap: reason=intrinsic action=make_not_entrant pc=0x00007ff9212193dc method=vgame.VConvert.dist(DDDD)D @ 17
+Event: 31,627 Thread 0x00007ff9242dd800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007ff92119bd2c method=java.io.BufferedInputStream.read([BII)I @ 101
+Event: 58,128 Thread 0x00007ff8d801e000 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007ff9211ac8d8 method=java.util.concurrent.locks.AbstractQueuedSynchronizer.release(I)Z @ 2
+Event: 58,135 Thread 0x00007ff8d885d800 Uncommon trap: reason=class_check action=maybe_recompile pc=0x00007ff92111a7e8 method=java.util.AbstractCollection.toArray([Ljava/lang/Object;)[Ljava/lang/Object; @ 1
+
+Internal exceptions (10 events):
+Event: 57,548 Thread 0x00007ff9242dd800 Threw 0x00000000ed162c68 at /build/buildd/openjdk-7-7u55-2.4.7/build/openjdk/hotspot/src/share/vm/prims/jni.cpp:717
+Event: 57,616 Thread 0x00007ff9242dd800 Threw 0x00000000ed2e5ab0 at /build/buildd/openjdk-7-7u55-2.4.7/build/openjdk/hotspot/src/share/vm/prims/jni.cpp:717
+Event: 57,679 Thread 0x00007ff9242dd800 Threw 0x00000000ed72e180 at /build/buildd/openjdk-7-7u55-2.4.7/build/openjdk/hotspot/src/share/vm/prims/jni.cpp:717
+Event: 57,746 Thread 0x00007ff9242dd800 Threw 0x00000000eda18418 at /build/buildd/openjdk-7-7u55-2.4.7/build/openjdk/hotspot/src/share/vm/prims/jni.cpp:717
+Event: 57,815 Thread 0x00007ff9242dd800 Threw 0x00000000edd01768 at /build/buildd/openjdk-7-7u55-2.4.7/build/openjdk/hotspot/src/share/vm/prims/jni.cpp:717
+Event: 57,875 Thread 0x00007ff9242dd800 Threw 0x00000000edfe7e18 at /build/buildd/openjdk-7-7u55-2.4.7/build/openjdk/hotspot/src/share/vm/prims/jni.cpp:717
+Event: 57,940 Thread 0x00007ff9242dd800 Threw 0x00000000ee170670 at /build/buildd/openjdk-7-7u55-2.4.7/build/openjdk/hotspot/src/share/vm/prims/jni.cpp:717
+Event: 58,002 Thread 0x00007ff9242dd800 Threw 0x00000000ee5bc350 at /build/buildd/openjdk-7-7u55-2.4.7/build/openjdk/hotspot/src/share/vm/prims/jni.cpp:717
+Event: 58,031 Thread 0x00007ff9242dd800 Threw 0x00000000ee78a270 at /build/buildd/openjdk-7-7u55-2.4.7/build/openjdk/hotspot/src/share/vm/prims/jvm.cpp:1244
+Event: 58,033 Thread 0x00007ff9242dd800 Threw 0x00000000ee78df68 at /build/buildd/openjdk-7-7u55-2.4.7/build/openjdk/hotspot/src/share/vm/prims/jvm.cpp:1244
+
+Events (10 events):
+Event: 58,135 Thread 0x00007ff8d885d800 DEOPT PACKING pc=0x00007ff92111a7e8 sp=0x00007ff8c5be58d0
+Event: 58,136 Thread 0x00007ff8d885d800 DEOPT UNPACKING pc=0x00007ff921039045 sp=0x00007ff8c5be58a8 mode 2
+Event: 58,136 loading class 0x00007ff91e7493f0
+Event: 58,136 loading class 0x00007ff91e749450
+Event: 58,137 loading class 0x00007ff91e749450 done
+Event: 58,137 loading class 0x00007ff91e7493f0 done
+Event: 58,138 Thread 0x00007ff8d885d800 Thread exited: 0x00007ff8d885d800
+Event: 58,145 Thread 0x00007ff8d8042000 Thread exited: 0x00007ff8d8042000
+Event: 58,151 Thread 0x00007ff9240a0000 Thread exited: 0x00007ff9240a0000
+Event: 58,173 Executing VM operation: Exit
+
+
+Dynamic libraries:
+00400000-00401000 r-xp 00000000 08:01 25303395                           /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+00600000-00601000 r--p 00000000 08:01 25303395                           /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+00601000-00602000 rw-p 00001000 08:01 25303395                           /usr/lib/jvm/java-7-openjdk-amd64/jre/bin/java
+007fe000-0081f000 rw-p 00000000 00:00 0                                  [heap]
+b9800000-bb380000 rw-p 00000000 00:00 0 
+bb380000-c3e00000 rw-p 00000000 00:00 0 
+c3e00000-c7100000 rw-p 00000000 00:00 0 
+c7100000-ce980000 ---p 00000000 00:00 0 
+ce980000-ebf00000 rw-p 00000000 00:00 0 
+ebf00000-f5b00000 rw-p 00000000 00:00 0 
+f5b00000-100000000 rw-p 00000000 00:00 0 
+7ff8a4000000-7ff8a423e000 rw-p 00000000 00:00 0 
+7ff8a423e000-7ff8a8000000 ---p 00000000 00:00 0 
+7ff8a8000000-7ff8a8021000 rw-p 00000000 00:00 0 
+7ff8a8021000-7ff8ac000000 ---p 00000000 00:00 0 
+7ff8ac000000-7ff8ac021000 rw-p 00000000 00:00 0 
+7ff8ac021000-7ff8b0000000 ---p 00000000 00:00 0 
+7ff8b0000000-7ff8b0021000 rw-p 00000000 00:00 0 
+7ff8b0021000-7ff8b4000000 ---p 00000000 00:00 0 
+7ff8b4000000-7ff8b4021000 rw-p 00000000 00:00 0 
+7ff8b4021000-7ff8b8000000 ---p 00000000 00:00 0 
+7ff8b8000000-7ff8b8021000 rw-p 00000000 00:00 0 
+7ff8b8021000-7ff8bc000000 ---p 00000000 00:00 0 
+7ff8bc425000-7ff8bc435000 rw-s 12d54d000 00:05 1263                      /dev/dri/card0
+7ff8bc435000-7ff8bc445000 rw-s 12d53d000 00:05 1263                      /dev/dri/card0
+7ff8bc445000-7ff8bc455000 rw-s 12d52d000 00:05 1263                      /dev/dri/card0
+7ff8bc455000-7ff8bc465000 rw-s 12d4ed000 00:05 1263                      /dev/dri/card0
+7ff8bc465000-7ff8bc475000 rw-s 1355a9000 00:05 1263                      /dev/dri/card0
+7ff8bc475000-7ff8bc485000 rw-s 135599000 00:05 1263                      /dev/dri/card0
+7ff8bc485000-7ff8bc495000 rw-s 135589000 00:05 1263                      /dev/dri/card0
+7ff8bc495000-7ff8bc4a5000 rw-s 13629d000 00:05 1263                      /dev/dri/card0
+7ff8bc4a5000-7ff8bc4a6000 rw-s 13629c000 00:05 1263                      /dev/dri/card0
+7ff8bc4a6000-7ff8bc4a7000 rw-s 13629b000 00:05 1263                      /dev/dri/card0
+7ff8bc4a7000-7ff8bc4a8000 rw-s 13629a000 00:05 1263                      /dev/dri/card0
+7ff8bc4a8000-7ff8bc4a9000 rw-s 136299000 00:05 1263                      /dev/dri/card0
+7ff8bc4a9000-7ff8bc4b9000 rw-s 136289000 00:05 1263                      /dev/dri/card0
+7ff8bc4b9000-7ff8bc4c9000 rw-s 136279000 00:05 1263                      /dev/dri/card0
+7ff8bc4c9000-7ff8bc4d9000 rw-s 136269000 00:05 1263                      /dev/dri/card0
+7ff8bc4d9000-7ff8bc4e9000 rw-s 136259000 00:05 1263                      /dev/dri/card0
+7ff8bc4e9000-7ff8bc4f9000 rw-s 137962000 00:05 1263                      /dev/dri/card0
+7ff8bc4f9000-7ff8bc4fd000 rw-s 13795e000 00:05 1263                      /dev/dri/card0
+7ff8bc4fd000-7ff8bc50d000 rw-s 13794e000 00:05 1263                      /dev/dri/card0
+7ff8bc50d000-7ff8bc51d000 rw-s 13793e000 00:05 1263                      /dev/dri/card0
+7ff8bc51d000-7ff8bc52d000 rw-s 13792e000 00:05 1263                      /dev/dri/card0
+7ff8bc52d000-7ff8bc53d000 rw-s 13791e000 00:05 1263                      /dev/dri/card0
+7ff8bc53d000-7ff8bc54d000 rw-s 13790e000 00:05 1263                      /dev/dri/card0
+7ff8bc54d000-7ff8bc55d000 rw-s 1378fe000 00:05 1263                      /dev/dri/card0
+7ff8bc55d000-7ff8bc56d000 rw-s 1378ee000 00:05 1263                      /dev/dri/card0
+7ff8bc56d000-7ff8bc571000 rw-s 1378ea000 00:05 1263                      /dev/dri/card0
+7ff8bc571000-7ff8bc581000 rw-s 1378da000 00:05 1263                      /dev/dri/card0
+7ff8bc581000-7ff8bc5c1000 rw-s 13789a000 00:05 1263                      /dev/dri/card0
+7ff8bc5c1000-7ff8bc5c5000 rw-s 137896000 00:05 1263                      /dev/dri/card0
+7ff8bc5c5000-7ff8bc5c9000 rw-s 137892000 00:05 1263                      /dev/dri/card0
+7ff8bc5c9000-7ff8bc5d9000 rw-s 137882000 00:05 1263                      /dev/dri/card0
+7ff8bc5d9000-7ff8bc5dd000 rw-s 13787e000 00:05 1263                      /dev/dri/card0
+7ff8bc5dd000-7ff8bc5e1000 rw-s 137879000 00:05 1263                      /dev/dri/card0
+7ff8bc5e1000-7ff8bc5e5000 rw-s 137875000 00:05 1263                      /dev/dri/card0
+7ff8bc5e5000-7ff8bc5e9000 rw-s 137871000 00:05 1263                      /dev/dri/card0
+7ff8bc5e9000-7ff8bc5ed000 rw-s 13786d000 00:05 1263                      /dev/dri/card0
+7ff8bc5ed000-7ff8bc5f1000 rw-s 137869000 00:05 1263                      /dev/dri/card0
+7ff8bc5f1000-7ff8bc5f5000 rw-s 137865000 00:05 1263                      /dev/dri/card0
+7ff8bc5f5000-7ff8bc5f9000 rw-s 137861000 00:05 1263                      /dev/dri/card0
+7ff8bc5f9000-7ff8bc5fd000 rw-s 13785d000 00:05 1263                      /dev/dri/card0
+7ff8bc5fd000-7ff8bc601000 rw-s 137859000 00:05 1263                      /dev/dri/card0
+7ff8bc601000-7ff8bc605000 rw-s 137855000 00:05 1263                      /dev/dri/card0
+7ff8bc605000-7ff8bc609000 rw-s 137851000 00:05 1263                      /dev/dri/card0
+7ff8bc609000-7ff8bc60d000 rw-s 13784d000 00:05 1263                      /dev/dri/card0
+7ff8bc60d000-7ff8bc61d000 rw-s 13783d000 00:05 1263                      /dev/dri/card0
+7ff8bc61d000-7ff8bc62d000 rw-s 13782d000 00:05 1263                      /dev/dri/card0
+7ff8bc62d000-7ff8bc63d000 rw-s 13781d000 00:05 1263                      /dev/dri/card0
+7ff8bc63d000-7ff8bc64d000 rw-s 13780d000 00:05 1263                      /dev/dri/card0
+7ff8bc64d000-7ff8bc65d000 rw-s 1377fd000 00:05 1263                      /dev/dri/card0
+7ff8bc65d000-7ff8bc66d000 rw-s 1377ed000 00:05 1263                      /dev/dri/card0
+7ff8bc66d000-7ff8bc67d000 rw-s 1377dd000 00:05 1263                      /dev/dri/card0
+7ff8bc67d000-7ff8bc68d000 rw-s 1377cd000 00:05 1263                      /dev/dri/card0
+7ff8bc68d000-7ff8bc69d000 rw-s 1377bd000 00:05 1263                      /dev/dri/card0
+7ff8bc69d000-7ff8bc6ad000 rw-s 1377ad000 00:05 1263                      /dev/dri/card0
+7ff8bc6ad000-7ff8bc6bd000 rw-s 13779d000 00:05 1263                      /dev/dri/card0
+7ff8bc6bd000-7ff8bc6cd000 rw-s 13778d000 00:05 1263                      /dev/dri/card0
+7ff8bc6cd000-7ff8bc6dd000 rw-s 13777d000 00:05 1263                      /dev/dri/card0
+7ff8bc6dd000-7ff8bc6ed000 rw-s 13776d000 00:05 1263                      /dev/dri/card0
+7ff8bc6ed000-7ff8bc6fd000 rw-s 13775d000 00:05 1263                      /dev/dri/card0
+7ff8bc6fd000-7ff8bc70d000 rw-s 13774d000 00:05 1263                      /dev/dri/card0
+7ff8bc70d000-7ff8bc71d000 rw-s 13773d000 00:05 1263                      /dev/dri/card0
+7ff8bc71d000-7ff8bc75d000 rw-s 1376fd000 00:05 1263                      /dev/dri/card0
+7ff8bc75d000-7ff8bc76d000 rw-s 1376ed000 00:05 1263                      /dev/dri/card0
+7ff8bc76d000-7ff8bc77d000 rw-s 1376dd000 00:05 1263                      /dev/dri/card0
+7ff8bc77d000-7ff8bc78d000 rw-s 1376cd000 00:05 1263                      /dev/dri/card0
+7ff8bc78d000-7ff8bc79d000 rw-s 1376bd000 00:05 1263                      /dev/dri/card0
+7ff8bc79d000-7ff8bc7ad000 rw-s 1376ad000 00:05 1263                      /dev/dri/card0
+7ff8bc7ad000-7ff8bc7bd000 rw-s 13769d000 00:05 1263                      /dev/dri/card0
+7ff8bc7bd000-7ff8bc7cd000 rw-s 13768d000 00:05 1263                      /dev/dri/card0
+7ff8bc7cd000-7ff8bc7dd000 rw-s 13767d000 00:05 1263                      /dev/dri/card0
+7ff8bc7dd000-7ff8bc7ed000 rw-s 13766d000 00:05 1263                      /dev/dri/card0
+7ff8bc7ed000-7ff8bc7fd000 rw-s 13765d000 00:05 1263                      /dev/dri/card0
+7ff8bc7fd000-7ff8bc80d000 rw-s 13764d000 00:05 1263                      /dev/dri/card0
+7ff8bc80d000-7ff8bc81d000 rw-s 13763d000 00:05 1263                      /dev/dri/card0
+7ff8bc81d000-7ff8bc82d000 rw-s 13762d000 00:05 1263                      /dev/dri/card0
+7ff8bc82d000-7ff8bc83d000 rw-s 13761d000 00:05 1263                      /dev/dri/card0
+7ff8bc83d000-7ff8bc84d000 rw-s 13760d000 00:05 1263                      /dev/dri/card0
+7ff8bc84d000-7ff8bc85d000 rw-s 1375fd000 00:05 1263                      /dev/dri/card0
+7ff8bc85d000-7ff8bc86d000 rw-s 1375ed000 00:05 1263                      /dev/dri/card0
+7ff8bc86d000-7ff8bc87d000 rw-s 1375dd000 00:05 1263                      /dev/dri/card0
+7ff8bc87d000-7ff8bc88d000 rw-s 1375cd000 00:05 1263                      /dev/dri/card0
+7ff8bc88d000-7ff8bc89d000 rw-s 1375bd000 00:05 1263                      /dev/dri/card0
+7ff8bc89d000-7ff8bc8ad000 rw-s 1375ad000 00:05 1263                      /dev/dri/card0
+7ff8bc8ad000-7ff8bc8bd000 rw-s 13759d000 00:05 1263                      /dev/dri/card0
+7ff8bc8bd000-7ff8bc8cd000 rw-s 13758d000 00:05 1263                      /dev/dri/card0
+7ff8bc8cd000-7ff8bc90d000 rw-s 13754d000 00:05 1263                      /dev/dri/card0
+7ff8bc90d000-7ff8bc94d000 rw-s 13750d000 00:05 1263                      /dev/dri/card0
+7ff8bc94d000-7ff8bc98d000 rw-s 1374cd000 00:05 1263                      /dev/dri/card0
+7ff8bc98d000-7ff8bc9cd000 rw-s 13748d000 00:05 1263                      /dev/dri/card0
+7ff8bc9cd000-7ff8bca0d000 rw-s 13744d000 00:05 1263                      /dev/dri/card0
+7ff8bca0d000-7ff8bca4d000 rw-s 13740d000 00:05 1263                      /dev/dri/card0
+7ff8bca4d000-7ff8bca8d000 rw-s 1373cd000 00:05 1263                      /dev/dri/card0
+7ff8bca8d000-7ff8bcacd000 rw-s 13738d000 00:05 1263                      /dev/dri/card0
+7ff8bcacd000-7ff8bcb0d000 rw-s 13734d000 00:05 1263                      /dev/dri/card0
+7ff8bcb0d000-7ff8bcb4d000 rw-s 13730d000 00:05 1263                      /dev/dri/card0
+7ff8bcb4d000-7ff8bcb8d000 rw-s 1372cd000 00:05 1263                      /dev/dri/card0
+7ff8bcb8d000-7ff8bcb91000 rw-s 1372c8000 00:05 1263                      /dev/dri/card0
+7ff8bcb91000-7ff8bcbd1000 rw-s 137288000 00:05 1263                      /dev/dri/card0
+7ff8bcbd1000-7ff8bcc11000 rw-s 137248000 00:05 1263                      /dev/dri/card0
+7ff8bcc11000-7ff8bcc51000 rw-s 137208000 00:05 1263                      /dev/dri/card0
+7ff8bcc51000-7ff8bcc91000 rw-s 1371c8000 00:05 1263                      /dev/dri/card0
+7ff8bcc91000-7ff8bccd1000 rw-s 137188000 00:05 1263                      /dev/dri/card0
+7ff8bccd1000-7ff8bcd11000 rw-s 137148000 00:05 1263                      /dev/dri/card0
+7ff8bcd11000-7ff8bcd51000 rw-s 137108000 00:05 1263                      /dev/dri/card0
+7ff8bcd51000-7ff8bcd91000 rw-s 1370c8000 00:05 1263                      /dev/dri/card0
+7ff8bcd91000-7ff8bcdd1000 rw-s 137088000 00:05 1263                      /dev/dri/card0
+7ff8bcdd1000-7ff8bce11000 rw-s 137048000 00:05 1263                      /dev/dri/card0
+7ff8bce11000-7ff8bce21000 rw-s 137038000 00:05 1263                      /dev/dri/card0
+7ff8bce21000-7ff8bce31000 rw-s 137028000 00:05 1263                      /dev/dri/card0
+7ff8bce31000-7ff8bce41000 rw-s 137018000 00:05 1263                      /dev/dri/card0
+7ff8bce41000-7ff8bce51000 rw-s 137008000 00:05 1263                      /dev/dri/card0
+7ff8bce51000-7ff8bce61000 rw-s 136ff8000 00:05 1263                      /dev/dri/card0
+7ff8bce61000-7ff8bce71000 rw-s 136fe8000 00:05 1263                      /dev/dri/card0
+7ff8bce71000-7ff8bce81000 rw-s 136fd8000 00:05 1263                      /dev/dri/card0
+7ff8bce81000-7ff8bce91000 rw-s 136fc8000 00:05 1263                      /dev/dri/card0
+7ff8bce91000-7ff8bcea1000 rw-s 136fb8000 00:05 1263                      /dev/dri/card0
+7ff8bcea1000-7ff8bceb1000 rw-s 136fa8000 00:05 1263                      /dev/dri/card0
+7ff8bceb1000-7ff8bcec1000 rw-s 136f98000 00:05 1263                      /dev/dri/card0
+7ff8bcec1000-7ff8bced1000 rw-s 136f88000 00:05 1263                      /dev/dri/card0
+7ff8bced1000-7ff8bcee1000 rw-s 136f78000 00:05 1263                      /dev/dri/card0
+7ff8bcee1000-7ff8bcef1000 rw-s 136f68000 00:05 1263                      /dev/dri/card0
+7ff8bcef1000-7ff8bcf01000 rw-s 136f58000 00:05 1263                      /dev/dri/card0
+7ff8bcf01000-7ff8bcf41000 rw-s 136f18000 00:05 1263                      /dev/dri/card0
+7ff8bcf41000-7ff8bcf81000 rw-s 136ed8000 00:05 1263                      /dev/dri/card0
+7ff8bcf81000-7ff8bcfc1000 rw-s 136e98000 00:05 1263                      /dev/dri/card0
+7ff8bcfc1000-7ff8bd001000 rw-s 136e58000 00:05 1263                      /dev/dri/card0
+7ff8bd001000-7ff8bd041000 rw-s 136e18000 00:05 1263                      /dev/dri/card0
+7ff8bd041000-7ff8bd081000 rw-s 136dd8000 00:05 1263                      /dev/dri/card0
+7ff8bd081000-7ff8bd0c1000 rw-s 136d98000 00:05 1263         

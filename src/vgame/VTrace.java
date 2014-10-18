@@ -33,7 +33,7 @@ public class VTrace {
 
     public void render(VPoint camera, VGraphics g) {
         if(l<0)return;
-        l--;
+        l-=5;
         if (unit != null) {
             int i = name.indexOf(unit);
             if (i == -1) {

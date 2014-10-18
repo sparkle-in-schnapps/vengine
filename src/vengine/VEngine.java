@@ -1,11 +1,6 @@
 package vengine;
 
-import java.awt.Point;
 import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintStream;
-import java.io.PrintWriter;
 import java.lang.reflect.Field;
 import java.net.Socket;
 import java.util.Scanner;
@@ -95,6 +90,7 @@ public class VEngine {
 
         VProcessor.add(new vexamples.units.VPlayer());
         VProcessor.add(new vexamples.units.VUnit());
+        VProcessor.add(new vexamples.units.VBullet());
 
         VMenu vm = new VMenu();
         vl.setVisible(false);

@@ -88,30 +88,35 @@ public class VAStarTurn {
                         
                         if (u != null) {
                             VPoint s = new VPoint(u.gd("x"), u.gd("y"), u.gd("z")); 
-                            if (p.x == (int) s.x / 64 && p.y == (int) p.y / 64) {
+                            if (p.x == (int) (s.x / 64) && p.y == (int) (s.y / 64)) {
+                                System.out.println("Way for " + u + " found");
+                                
                                 Point[] point = new Point[64];
                                 for (int j = 0; j < 64; j++) {
                                     point[j] = new Point(p.x, p.y);
                                     if (p.p != null) {
                                         p = p.p;
+                                        
                                     }
                                 }
 
                                 System.arraycopy(point, 0, u.way, 0, 64);
-                            }
+                            }else{
+                                }
+                                    
                         }
 
                         pp.add(p);
-                        return;
+                        
                     }
                 }
             }
-
+            
         }
 
     }
 
-    public static void findWay(VLandschaft vl, VPoint s, VPoint f, VObject... vo) {
+    public static void findWay(VLandschaft vl, VPoint f, VObject... vo) {
         System.out.println("Add way to turn");
         final way w = new way(vo, vl, f);
         Thread t = new Thread("AStar") {

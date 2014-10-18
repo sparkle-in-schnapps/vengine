@@ -21,6 +21,7 @@ public class Place_base extends VAbility {
      Not enough free staff.
      Not enough money.
      Barracks filled.
+    РЭЙНФОРСМЕНЦ ЭРАЙВД
      Reinforcements arrived.
      Energy restored. 
      Construction completed.

@@ -72,6 +72,33 @@ public class VLandschaft {
         }
     }
 
+    public void crater(int cx, int cy, int cz) {
+        int x = cx / 64;
+        int y = cy / 64;
+        Point p = point(x, y);
+        if (types[type[p.x][p.y]].gi("crater") != 0) {
+            type[p.x][p.y] = (byte) types[type[p.x][p.y]].gi("crater");
+        }
+    }
+
+    public void pit(int cx, int cy, int cz) {
+        int x = cx / 64;
+        int y = cy / 64;
+
+        for (int j = 3; j < 10; j++) {
+            if (r.nextInt(j) == 0) {
+                int vx = r.nextInt(j) - j / 2;
+                int vy = r.nextInt(j) - j / 2;
+                Point p = point(x + vx, y + vy);
+
+                if (types[type[p.x][p.y]].g("pit").equals("yes") && levels[p.x][p.y] > 0) {
+                    levels[p.x][p.y]--;
+                    type[p.x][p.y] = (byte) types[type[p.x][p.y]].gi("next");
+                }
+            }
+        }
+    }
+
     public void open_map(int power, int cx, int cy, int cz) {
         int x = cx / 64;
         int y = cy / 64;
@@ -165,6 +192,25 @@ public class VLandschaft {
 
             }
         }
+        for (int j = 0; j < 100; j++) {
+            int px = r.nextInt(500);
+            int py = r.nextInt(500);
+            double d = r.nextDouble() * Math.PI * 2;
+            for (int k = 0; k < 30 + r.nextInt(30); k++) {
+                d += (double) (r.nextInt(21) - 10) / 20.0;
+                px += Math.cos(d) * 2;
+                py += Math.sin(d) * 2;
+
+                for (int m = -1; m <= 1; m++) {
+                    for (int n = -1; n <= 1; n++) {
+                        Point p = point(px + m, py + n);
+                        levels[p.x][p.y] = (byte) 2;
+
+                    }
+                }
+
+            }
+        }
     }
 
     public void render(VGraphics g, Point pcm) {
@@ -189,8 +235,9 @@ public class VLandschaft {
                     g.setColor(new Color(235, 0, 0));
                 } else {
                     g.setColor(new Color(235, 235, 235));
-                
+
                 }
+
                 g.setTexture(types[tp(point(x, y))].g("texture"));
 
                 if (x % 2 == 0) {
@@ -245,29 +292,37 @@ public class VLandschaft {
                 }
                 g.setTexture(types[tp(point(x, y))].g("border_texture"));
 
-                g.fillPolygon(
-                        VConvert.to2DPoint(x * 64 + 32 - pcm.x, y * 64 + 32 - pcm.y, (((z - h == o) | (z - h == so) | (z - h == s)) ? z - h : z)),
-                        VConvert.to2DPoint(x * 64 + 32 - pcm.x, y * 64 + 32 - pcm.y, 0),
-                        VConvert.to2DPoint(x * 64 + 32 - pcm.x, y * 64 - 32 - pcm.y, 0),
-                        VConvert.to2DPoint(x * 64 + 32 - pcm.x, y * 64 - 32 - pcm.y, (((z - h == o) | (z - h == no) | (z - h == n)) ? z - h : z))
-                );
+                if (o < z || no < z || n < z) {
+                    g.fillPolygon(
+                            VConvert.to2DPoint(x * 64 + 32 - pcm.x, y * 64 + 32 - pcm.y, (((z - h == o) | (z - h == so) | (z - h == s)) ? z - h : z)),
+                            VConvert.to2DPoint(x * 64 + 32 - pcm.x, y * 64 + 32 - pcm.y, 0),
+                            VConvert.to2DPoint(x * 64 + 32 - pcm.x, y * 64 - 32 - pcm.y, 0),
+                            VConvert.to2DPoint(x * 64 + 32 - pcm.x, y * 64 - 32 - pcm.y, (((z - h == o) | (z - h == no) | (z - h == n)) ? z - h : z))
+                    );
+                }
+
                 if (tf(point(x, y)) > 0) {
                     g.setColor(new Color(190, 190, 190));
                 } else {
                     g.setColor(new Color(90, 90, 90));
                 }
-                g.fillPolygon(
-                        VConvert.to2DPoint(x * 64 + 32 - pcm.x, y * 64 + 32 - pcm.y, (((z - h == o) | (z - h == so) | (z - h == s)) ? z - h : z)),
-                        VConvert.to2DPoint(x * 64 + 32 - pcm.x, y * 64 + 32 - pcm.y, 0),
-                        VConvert.to2DPoint(x * 64 - 32 - pcm.x, y * 64 + 32 - pcm.y, 0),
-                        VConvert.to2DPoint(x * 64 - 32 - pcm.x, y * 64 + 32 - pcm.y, (((z - h == w) | (z - h == sw) | (z - h == s)) ? z - h : z))
-                );
+                if (w < z || sw < z || s < z) {
+
+                    g.fillPolygon(
+                            VConvert.to2DPoint(x * 64 + 32 - pcm.x, y * 64 + 32 - pcm.y, (((z - h == o) | (z - h == so) | (z - h == s)) ? z - h : z)),
+                            VConvert.to2DPoint(x * 64 + 32 - pcm.x, y * 64 + 32 - pcm.y, 0),
+                            VConvert.to2DPoint(x * 64 - 32 - pcm.x, y * 64 + 32 - pcm.y, 0),
+                            VConvert.to2DPoint(x * 64 - 32 - pcm.x, y * 64 + 32 - pcm.y, (((z - h == w) | (z - h == sw) | (z - h == s)) ? z - h : z))
+                    );
+                }
+                //   */
 
             }
 
         }
     }
     int i;
+
     public void render_fow(VGraphics g, Point pcm) {
         g.setTexture("fow/full.png");
         i++;
@@ -289,9 +344,9 @@ public class VLandschaft {
                 VPoint p = VConvert.to2DPoint(x * 64 - pcm.x, y * 64 - pcm.y, z);
 
                 if (tf(point(x, y)) <= 1) {
-                    if(tf(point(x, y))==0){
+                    if (tf(point(x, y)) == 0) {
                         g.setColor(new Color(255, 255, 255, 75));
-                    }else{
+                    } else {
                         g.setColor(new Color(255, 255, 255, 15));
                     }
                     g.drawRect((int) p.x, (int) p.y, 255, 255, i);
@@ -307,7 +362,7 @@ public class VLandschaft {
         for (int i = 0; i < 512; i++) {
             for (int j = 0; j < 512; j++) {
                 fow[i][j] = fow2[i][j];
-                fow2[i][j] = (byte) (fow[i][j]>0?1:0);
+                fow2[i][j] = (byte) (fow[i][j] > 0 ? 1 : 0);
             }
         }
 
@@ -344,6 +399,18 @@ public class VLandschaft {
         int yx = ((((z - h == w) | (z - h == nw) | (z - h == n)) ? z - h : z));
 
         return (xx + xy + yy + yx) / 4;
+    }
+
+    public boolean get_visible(int x, int y) {
+        x += 32;
+        y += 32;
+        int ix = x;
+        int iy = y;
+        x /= 64;
+        y /= 64;
+        x = point(x, y).x;
+        y = point(x, y).y;
+        return fow[x][y]==2;
     }
 
     public void sublight(int x, int y, VPoint pcm, VGraphics g) {

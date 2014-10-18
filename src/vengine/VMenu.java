@@ -54,7 +54,7 @@ public class VMenu {
                 
                 int dx = VGraphics.WIDTH / 2 - 200;
                 VContainer mainmenu = new VContainer();
-                mainmenu.add(new VButton("Campaign", dx, 200, 400, 20) {
+                mainmenu.add(new VButton("Campaign/Кампания", dx, 200, 400, 20) {
                 });
                 mainmenu.add(new VButton("Skirmish", dx, 230, 400, 20) {
 

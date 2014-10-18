@@ -53,8 +53,13 @@ public class VObject {
         vp.init(game, this);
         for (String param : params) {
             if (param.contains("=")) {
+                try {
                 String s[] = param.split("=");
-                s(s[0], s[1]);
+                s(s[0], s[1]);    
+                } catch (Exception e) {
+                    System.err.println("Something wrong here: " + param);
+                }
+                
             } else if (param.charAt(0) == '#') {
                 tags.add(param);
             } else if (param.charAt(0) == '$') {
@@ -65,7 +70,7 @@ public class VObject {
     }
 
     public void tag(String tag) {
-        if (tags.contains(tag)) {
+        if (!tags.contains(tag)) {
             tags.add(tag);
         }
     }
@@ -135,7 +140,12 @@ public class VObject {
         }
     }
 
+    @Override
+    public String toString() {
+        return type.g("processor")+"-"+serial;
+    }
+    
     public void remove() {
-        
+        game.remove(this);
     }
 }

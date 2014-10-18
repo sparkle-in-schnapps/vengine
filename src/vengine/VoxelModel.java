@@ -32,13 +32,15 @@ import vgame.VConvert;
  * @author yew_mentzaki
  */
 public class VoxelModel {
+
     private static ArrayList<VoxelModel> vm = new ArrayList<VoxelModel>();
-    public static void render(String name, VGraphics g, VPoint loc, VPoint t){
+
+    public static void render(String name, VGraphics g, VPoint loc, VPoint t) {
         for (VoxelModel vm : vm) {
-            if(vm.name.equals(name)){
+            if (vm.name.equals(name)) {
                 vm.render(g, loc, t);
                 return;
-                
+
             }
         }
         ///*
@@ -47,20 +49,36 @@ public class VoxelModel {
         vm.add(v);
         //*/
     }
-     public static void render(VoxelModel v, VGraphics g, VPoint loc, VPoint t){
-        
+
+    public static void render(String name, VGraphics g, VPoint loc, VPoint t, VPoint t2) {
+        for (VoxelModel vm : vm) {
+            if (vm.name.equals(name)) {
+                vm.render(g, loc, t, t2);
+                return;
+
+            }
+        }
         ///*
-        
+        VoxelModel v = new VoxelModel(name);
         v.render(g, loc, t);
-        
+        vm.add(v);
         //*/
     }
-    public static VoxelModel load(String name){
+
+    public static void render(VoxelModel v, VGraphics g, VPoint loc, VPoint t) {
+
+        ///*
+        v.render(g, loc, t);
+
+        //*/
+    }
+
+    public static VoxelModel load(String name) {
         VoxelModel v = new VoxelModel(name);
         vm.add(v);
         return v;
     }
-        
+
     private String name;
     private Texture textures[];
 
@@ -76,8 +94,40 @@ public class VoxelModel {
         return null;
     }
 
+    private void render(VGraphics g, VPoint loc, VPoint t, VPoint t2) {
+        if (textures == null) {
+            return;
+        }
+        VPoint[] p = new VPoint[]{
+            new VPoint(-textures[0].getImageWidth() / 4, textures[0].getImageWidth() / 4, 0),
+            new VPoint(-textures[0].getImageWidth() / 4, -textures[0].getImageWidth() / 4, 0),
+            new VPoint(textures[0].getImageWidth() / 4, -textures[0].getImageWidth() / 4, 0),
+            new VPoint(textures[0].getImageWidth() / 4, textures[0].getImageWidth() / 4, 0),};
+        for (int i = 0; i < textures.length; i++) {
+            VPoint[] l = new VPoint[4];
+            for (int j = 0; j < 4; j++) {
+                l[j] = new VPoint(p[j].x * Math.cos(t.y) - (i) * Math.sin(t.y), p[j].y, p[j].x * Math.sin(t.y) + (i) * Math.cos(t.y));
+                
+                l[j] = new VPoint(l[j].x * Math.cos(t.z) - p[j].y * Math.sin(t.z), l[j].x * Math.sin(t.z) + l[j].y * Math.cos(t.z), l[j].z);
+               l[j] = new VPoint(l[j].x * Math.cos(t2.y) - (i) * Math.sin(t2.y), l[j].y, l[j].x * Math.sin(t2.y) + (i) * Math.cos(t2.y));
+                
+                l[j] = new VPoint(l[j].x * Math.cos(t2.z) - l[j].y * Math.sin(t2.z), l[j].x * Math.sin(t2.z) + l[j].y * Math.cos(t2.z), l[j].z);
+
+                l[j].x += loc.x;
+                l[j].y += loc.y;
+                l[j].z += loc.z;
+                l[j] = VConvert.to2DPoint((int) l[j].x, (int) l[j].y, (int) l[j].z);
+            }
+            textures[i].bind();
+            g.fillPolygon(l);
+        }
+
+    }
+
     private void render(VGraphics g, VPoint loc, VPoint t) {
-        if(textures==null)return;
+        if (textures == null) {
+            return;
+        }
         VPoint[] p = new VPoint[]{
             new VPoint(-textures[0].getImageWidth() / 4, textures[0].getImageWidth() / 4, 0),
             new VPoint(-textures[0].getImageWidth() / 4, -textures[0].getImageWidth() / 4, 0),

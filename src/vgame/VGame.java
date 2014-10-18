@@ -83,16 +83,17 @@ public class VGame {
 
         String v = cfg.g("version");
         List factions = VFileReader.readList(new File(vengine.VEngine.cfg.g("modhome") + v + "/factions.list"));
-        List units = VFileReader.readList(new File(vengine.VEngine.cfg.g("modhome") + v + "/units.list"));
-        types = new CFG[units.size() + 1];
+
+        String units[] = new File(vengine.VEngine.cfg.g("modhome") + v + "/units").list();
+        this.types = new CFG[units.length + 1];
         this.factions = new CFG[factions.size()];
-        for (int i = 0; i < types.length - 1; i++) {
-            types[i] = VFileReader.readCFG(new File(vengine.VEngine.cfg.g("modhome") + v + "/units/" + units.get(i) + ".cfg"));
+        for (int i = 0; i < units.length; i++) {
+            this.types[i] = VFileReader.readCFG(new File(vengine.VEngine.cfg.g("modhome") + v + "/units/" + units[i]));
         }
         CFG player = new CFG();
         player.s("gamename", "VPlayer");
         player.s("processor", "VPlayer");
-        types[units.size()] = player;
+        this.types[units.length] = player;
         for (int i = 0; i < this.factions.length; i++) {
             this.factions[i] = VFileReader.readCFG(new File(vengine.VEngine.cfg.g("modhome") + v + "/factions/" + factions.get(i) + ".cfg"));
         }
@@ -223,7 +224,7 @@ public class VGame {
 
                                         mousetimer = 3;
                                         VObject[] vo = getObjects(new VPoint(playercam.x + 600, playercam.y + 600, 0), 5000, "#tick");
-                                        if(players[player].gi("money")>type(s).gi("price"));
+                                        if (players[player].gi("money") > type(s).gi("price"));
                                         for (VObject o : vo) {
                                             if (o.gi("pt") == 0 && o.type.g("building_type").equals("factory") && o.gi("!std") == 0) {
 
@@ -303,12 +304,19 @@ public class VGame {
             timer4.start();
         } catch (Exception e) {
         }
-        newObject("mkw", "x=0", "y=0", "ow=0", "#tick", "#render");
-                
+        for (int i = 0; i < 2; i++) {
+            newObject("st_192", "x=" + r.nextInt(1000), "y=" + r.nextInt(1000), "ow=0", "#tick", "#render");
+            newObject("st_19", "x=" + r.nextInt(1000), "y=" + r.nextInt(1000), "ow=0", "#tick", "#render");
+            newObject("st_rocket", "x=" + r.nextInt(1000), "y=" + r.nextInt(1000), "ow=0", "#tick", "#render");
+            newObject("robotank", "x=" + r.nextInt(1000), "y=" + r.nextInt(1000), "ow=1", "#tick", "#render");
+           newObject("obj447", "x=" + r.nextInt(1000), "y=" + r.nextInt(1000), "ow=1", "#tick", "#render");
+
+        }
+
     }
 
     public void addSpray(int type, VPoint v) {
-        if (r.nextBoolean()) {
+        if (type == 0) {
             return;
         }
         for (int i = 0; i < vsp.length; i++) {
@@ -323,153 +331,203 @@ public class VGame {
     }
     ArrayList<VTrace> vt_add = new ArrayList<VTrace>();
     ArrayList<VTrace> vt = new ArrayList<VTrace>();
-    
+
     public void renderObjects(VGraphics g) {
-        int mx = Mouse.getX(), my = g.getHeight() - Mouse.getY();
-        if (mousetimer > 0) {
-            mousetimer--;
-        }
-        boolean select = false;
-        boolean selected = false;
-        VPoint mp = VConvert.toPoint(mx, my + 60);
-        boolean canbuild = true;
-        mp.x += playercam.x;
-        mp.y += playercam.y;
-        VPoint camera = new VPoint(playercam.x, playercam.y, 0);
-        for (int i = 0; i < vt_add.size(); i++) {
-            vt.add(vt_add.get(0));
-            vt_add.remove(0);
-        }
-        for (int i = 0; i < vt.size(); i++) {
-            if(vt.get(i).l<=0){
-                vt.remove(i);
-                i--;
-            }
-        }
         try {
-            for (VTrace t : vt) {
-            t.render(camera, g);
-        }
-        } catch (Exception e) {
-        }
-        
-        for (VObject vo : getObjectsForRender("#render")) {
-            if (Math.sqrt(Math.pow(mp.x - vo.gd("x"), 2) + Math.pow(mp.y - vo.gd("y"), 2)) < 128) {
-                canbuild = false;
+
+            int mx = Mouse.getX(), my = g.getHeight() - Mouse.getY();
+            if (mousetimer > 0) {
+                mousetimer--;
+            }
+            boolean select = false;
+            boolean selectd = false;
+            VPoint mp = VConvert.toPoint(mx, my + 60);
+            boolean canbuild = true;
+            mp.x += playercam.x;
+            mp.y += playercam.y;
+            VPoint camera = new VPoint(playercam.x, playercam.y, 0);
+            for (int i = 0; i < vt_add.size(); i++) {
+                vt.add(vt_add.get(0));
+                vt_add.remove(0);
+            }
+            for (int i = 0; i < vt.size(); i++) {
+                if (vt.get(i).l <= 0) {
+                    vt.remove(i);
+                    i--;
+                }
+            }
+            try {
+                for (VTrace t : vt) {
+                    t.render(camera, g);
+                }
+            } catch (Exception e) {
             }
 
-            if (Mouse.isButtonDown(1) && mousetimer <= 0) {
-                this.selected[0].clear();
-                mousetimer = 5;
-            }
-            VPoint v = VConvert.to2DPoint((int) vo.gd("x") - playercam.x, (int) vo.gd("y") - playercam.y, (int) vo.gd("z"));
+            for (VObject vo : getObjectsForRender("#render")) {
+                if (Math.sqrt(Math.pow(mp.x - vo.gd("x"), 2) + Math.pow(mp.y - vo.gd("y"), 2)) < 128) {
+                    canbuild = false;
+                }
 
-            if (v.x > -100 && v.y > -100 && v.x < 100 + g.getWidth() && v.y < 100 + g.getHeight()) {
-                vo.vp.render(this, vo, new VPoint(playercam.x, playercam.y, 0), g);
-                if (placeBuilding == null) {
-                    double d = VConvert.dist(mx, my, v.x, v.y);
-                    if (d < 32) {
-                        select = true;
-                        mx = (int) v.x;
-                        my = (int) v.y;
-                        if (Mouse.isButtonDown(0)) {
+                if (Mouse.isButtonDown(1) && mousetimer <= 0) {
+                    this.selected[0].clear();
+                    mousetimer = 5;
+                }
+                VPoint v = VConvert.to2DPoint((int) vo.gd("x") - playercam.x, (int) vo.gd("y") - playercam.y, (int) vo.gd("z"));
 
-                            selected = true;
-                            if (!(Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))) {
-                                this.selected[0].clear();
+                if (v.x > -100 && v.y > -100 && v.x < 100 + g.getWidth() && v.y < 100 + g.getHeight()) {
+                    vo.vp.render(this, vo, new VPoint(playercam.x, playercam.y, 0), g);
+                    if (placeBuilding == null) {
+                        double d = VConvert.dist(mx, my, v.x, v.y);
+                        if (d < 32) {
+                            select = true;
+                            mx = (int) v.x;
+                            my = (int) v.y;
+                            if (Mouse.isButtonDown(0)) {
+
+                                selectd = true;
+                                if (!(Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))) {
+                                    this.selected[0].clear();
+                                }
+                                this.selected[0].add(vo);
+
+                                mousetimer = 5;
                             }
-                            this.selected[0].add(vo);
-
-                            mousetimer = 5;
                         }
                     }
+                    if (this.selected[0].contains(vo)) {
+                        g.setColor(Color.white);
+                        g.setTexture("unit_selected.png");
+
+                        g.drawRect((int) v.x, (int) v.y, 64, 64, 0);
+                    }
                 }
-                if (this.selected[0].contains(vo)) {
-                    g.setColor(Color.white);
-                    g.setTexture("unit_selected.png");
 
-                    g.drawRect((int) v.x, (int) v.y, 64, 64, 0);
+                if (placeBuilding == null && !selectd && Mouse.isButtonDown(0) && mousetimer <= 0) {
+                    if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL) || Keyboard.isKeyDown(Keyboard.KEY_RCONTROL)) {
+                        VPoint vpp = VConvert.toPoint(mx, my + 30);
+                        final int x = (int) vpp.x + playercam.x;
+                        final int y = (int) vpp.y + playercam.y;
+
+                        for (VObject voo : this.selected[0]) {
+
+                            voo.vp.call(this, voo, "attack", "" + x, "" + y);
+
+                        }
+
+                    } else {
+                        VPoint vpp = VConvert.toPoint(mx, my + 30);
+                        final int x = (int) vpp.x + playercam.x;
+                        final int y = (int) vpp.y + playercam.y;
+
+                        VObject svo[] = new VObject[selected[0].size()];
+                        for (int i = 0; i < selected[0].size(); i++) {
+                            svo[i] = selected[0].get(i);
+                        }
+                        VAStarTurn.findWay(vl, new VPoint(x, y, 0), svo);
+
+                        for (VObject voo : this.selected[0]) {
+
+                            voo.vp.call(this, voo, "move", "" + x, "" + y);
+
+                        }
+
+                    }
+                    mousetimer = 5;
                 }
+
             }
-
-            if (placeBuilding == null && !selected && Mouse.isButtonDown(0) && mousetimer <= 0) {
-                VPoint vpp = VConvert.toPoint(mx, my + 30);
-                int x = (int) vpp.x + playercam.x;
-                int y = (int) vpp.y + playercam.y;
-
-                for (VObject voo : this.selected[0]) {
-
-                    voo.vp.call(this, voo, "move", "" + x, "" + y);
+            for (int i = 0;
+                    i < vsp.length;
+                    i++) {
+                if (vsp[i] != null) {
+                    vsp[i].render(new VPoint(playercam.x, playercam.y, 60), vg, g);
+                    if (vsp[i].l <= 0) {
+                        vsp[i] = null;
+                    }
                 }
-                mousetimer = 5;
+
             }
 
-        }
-        for (int i = 0; i < vsp.length; i++) {
-            if (vsp[i] != null) {
-                vsp[i].render(new VPoint(playercam.x, playercam.y, 60), vg, g);
-                if (vsp[i].l <= 0) {
-                    vsp[i] = null;
+            vl.render_fow(g, playercam);
+            if (placeBuilding == null && select) {
+                g.setColor(Color.green);
+
+                g.setTexture("map_selector.png");
+                selectora /= 1.2;
+                if (selectors > 64) {
+                    selectors--;
                 }
+                if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL) || Keyboard.isKeyDown(Keyboard.KEY_RCONTROL)) {
+                    g.setColor(new Color(255, 150, 50));
+
+                }
+                g.drawRect(mx, my, selectors, selectors, selectora);
+            } else {
+                g.setColor(Color.yellow);
+                g.setTexture("map_selector.png");
+                if (selectora >= 45) {
+                    selectora -= 90;
+                }
+                selectora += 4.0f;
+                if (selectors < 96) {
+                    selectors++;
+                }
+
+                int sy = selectors;
+                if (Keyboard.isKeyDown(Keyboard.KEY_LCONTROL) || Keyboard.isKeyDown(Keyboard.KEY_RCONTROL)) {
+                    g.setColor(new Color(255, 150, 50));
+                    sy /= 2;
+                    selectora += 10.0f;
+
+                }
+                g.drawRect(mx, my, selectors, selectors, selectora);
             }
 
-        }
-        vl.render_fow(g, playercam);
-        if (placeBuilding == null && select) {
-            g.setColor(Color.green);
-            g.setTexture("map_selector.png");
-            selectora /= 1.2;
-            if (selectors > 64) {
-                selectors--;
+            if (mx
+                    < 10) {
+                playercam.x -= 10;
+                playercam.y += 10;
+
             }
-            g.drawRect(mx, my, selectors, selectors, selectora);
-        } else {
-            g.setColor(Color.yellow);
-            g.setTexture("map_selector.png");
-            if (selectora >= 45) {
-                selectora -= 90;
+            if (my
+                    < 10) {
+                playercam.x -= 10;
+                playercam.y -= 10;
             }
-            selectora += 4.0f;
-            if (selectors < 96) {
-                selectors++;
+            if (mx
+                    > g.getWidth()
+                    - 10) {
+                playercam.x += 10;
+                playercam.y -= 10;
             }
-            g.drawRect(mx, my, selectors, selectors, selectora);
-        }
+            if (my
+                    > g.getHeight()
+                    - 10) {
 
-        if (mx < 10) {
-            playercam.x -= 10;
-            playercam.y += 10;
+                playercam.x += 10;
+                playercam.y += 10;
+            }
+            if (placeBuilding != null && mousetimer
+                    <= 0) {
+                g.setColor(new Color(canbuild ? 0 : 255, canbuild ? 255 : 0, 0, 128));
+                VPoint vp = VConvert.toPoint(mx, my);
+                Sprite.render(placeBuilding, g, 0, vp);
+                if (Mouse.isButtonDown(0) && canbuild && players[player].gi("money") >= type(placeBuilding).gi("price") && 180 - players[player].gi("p") > type(placeBuilding).gi("crew")) {
+                    players[player].s("money", players[player].gi("money") - type(placeBuilding).gi("price"));
 
-        }
-        if (my < 10) {
-            playercam.x -= 10;
-            playercam.y -= 10;
-        }
-        if (mx > g.getWidth() - 10) {
-            playercam.x += 10;
-            playercam.y -= 10;
-        }
-        if (my > g.getHeight() - 10) {
+                    newObject(placeBuilding, "x=" + (vp.x + 60 + playercam.x), "y=" + (vp.y + 60 + playercam.y), "ow=" + player, "#tick", "#render");
+                    placeBuilding = null;
+                    mousetimer = 5;
+                }
 
-            playercam.x += 10;
-            playercam.y += 10;
-        }
-        if (placeBuilding != null && mousetimer <= 0) {
-            g.setColor(new Color(canbuild ? 0 : 255, canbuild ? 255 : 0, 0, 128));
-            VPoint vp = VConvert.toPoint(mx, my);
-            Sprite.render(placeBuilding, g, 0, vp);
-            if (Mouse.isButtonDown(0) && canbuild && players[player].gi("money") >= type(placeBuilding).gi("price")&&180-players[player].gi("p")>type(placeBuilding).gi("crew")) {
-                players[player].s("money", players[player].gi("money") - type(placeBuilding).gi("price"));
+            }
 
-                newObject(placeBuilding, "x=" + (vp.x + 60 + playercam.x), "y=" + (vp.y + 60 + playercam.y), "ow=" + player, "#tick", "#render");
+            if (Mouse.isButtonDown(
+                    1)) {
+
                 placeBuilding = null;
-                mousetimer = 5;
             }
-
-        }
-        if (Mouse.isButtonDown(1)) {
-
-            placeBuilding = null;
+        } catch (Exception e) {
         }
     }
 
@@ -480,6 +538,7 @@ public class VGame {
                 try {
                     vo.vp.tick(this, vo);
                 } catch (Exception e) {
+                    e.printStackTrace();
                 }
 
             }
@@ -533,7 +592,7 @@ public class VGame {
         ArrayList<VObject> vos = new ArrayList<VObject>();
         ArrayList<Integer> voi = new ArrayList<Integer>();
         for (VObject vo : this.vo) {
-            if (vo.isT("#tick")) {
+            if (vo.isT(tags)) {
                 int j = (int) Math.sqrt(Math.pow(t.x - vo.gd("x"), 2) + Math.pow(t.y - vo.gd("y"), 2));
                 if (j < radius) {
                     voi.add(j);
@@ -577,6 +636,7 @@ public class VGame {
         ArrayList<Integer> voi = new ArrayList<Integer>();
         for (VObject vo : this.vo) {
             if (vo.isT(tags)) {
+
                 vos.add(vo);
                 voi.add(vo.vp.y(vo));
             }
@@ -600,11 +660,15 @@ public class VGame {
 
     public void trace(String g, VPoint vPoint, VPoint vPoint0) {
         try {
-        vt_add.add(new VTrace(g, vPoint, vPoint0));     
+            vt_add.add(new VTrace(g, vPoint, vPoint0));
         } catch (Exception e) {
             e.printStackTrace();
         }
-       
+
+    }
+
+    void remove(VObject aThis) {
+        vo.remove(aThis);
     }
 
 }

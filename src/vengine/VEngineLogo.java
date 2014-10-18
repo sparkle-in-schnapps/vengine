@@ -6,7 +6,12 @@
 package vengine;
 
 import java.awt.Dimension;
+import java.awt.Image;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 
 /**
  *
@@ -19,6 +24,14 @@ public class VEngineLogo extends javax.swing.JFrame {
      */
     public VEngineLogo() {
         initComponents();
+        Image i;
+        try {
+            i = (Image) ImageIO.read(getClass().getResource("/vengine/sis.png"));
+            setIconImage(i);
+        } catch (IOException ex) {
+            Logger.getLogger(VEngineLogo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int locationX = (screenSize.width - getWidth()) / 2;
         int locationY = (screenSize.height - getHeight()) / 2;
@@ -37,7 +50,7 @@ public class VEngineLogo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Powered by VEngine");
+        setTitle("Sparkle in Schnapps presents");
         setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         setUndecorated(true);
         setResizable(false);
